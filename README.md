@@ -2,7 +2,7 @@
 
 Web personal: soporte IT, sistemas y desarrollo. Castellano e inglés (botón ES / EN).
 
-**Web:** https://salmeronvictor486-lang.github.io/
+**Web:** https://victorsalmeron.dev/
 
 ## Tecnología
 
@@ -41,10 +41,14 @@ robots.txt, sitemap.xml   Para que Google encuentre la web
 - **Textos en inglés:** en `assets/js/main.js`, dentro de `EN`, con la misma clave (`data-i18n`) que en el HTML.
 - **CV:** sustituye los PDF de `cv/` manteniendo el mismo nombre.
 
-## Dominio propio (pendiente)
+## Dominio
 
-Ahora mismo la web se publica en https://salmeronvictor486-lang.github.io/. Cuando compres `victorsalmeron.dev`:
+La web se sirve desde GitHub Pages con el dominio `victorsalmeron.dev` (archivo `CNAME`). El DNS está en Cloudflare:
 
-1. En GitHub: **Settings → Pages → Custom domain**, escribe `victorsalmeron.dev` y guarda (esto crea el archivo `CNAME`). Marca **Enforce HTTPS** cuando esté disponible.
-2. En tu proveedor del dominio, añade registros DNS `A` para `@` apuntando a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y `185.199.111.153`, y un `CNAME` para `www` apuntando a `salmeronvictor486-lang.github.io`.
-3. Sustituye `https://salmeronvictor486-lang.github.io/` por `https://victorsalmeron.dev/` en `index.html`, `sitemap.xml`, `robots.txt` y este README.
+| Tipo  | Nombre | Contenido |
+|-------|--------|-----------|
+| A     | @      | 185.199.108.153 · 185.199.109.153 · 185.199.110.153 · 185.199.111.153 |
+| AAAA  | @      | 2606:50c0:8000::153 · 2606:50c0:8001::153 · 2606:50c0:8002::153 · 2606:50c0:8003::153 |
+| CNAME | www    | salmeronvictor486-lang.github.io |
+
+Todos en modo "DNS only" (nube gris). La antigua dirección `salmeronvictor486-lang.github.io` redirige al dominio.
