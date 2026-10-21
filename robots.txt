@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://salmeronvictor486-lang.github.io/sitemap.xml

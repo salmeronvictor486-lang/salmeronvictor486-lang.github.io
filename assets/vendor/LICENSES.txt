@@ -1,0 +1,8 @@
+Librerías y tipografías incluidas en esta web (alojadas aquí, sin cargar nada de terceros):
+
+- GSAP 3.13.0 y ScrollTrigger — GreenSock. Licencia estándar gratuita de GSAP: https://gsap.com/standard-license
+- Lenis 1.1.13 — darkroom.engineering. Licencia MIT: https://github.com/darkroomengineering/lenis
+- Inter Tight — Licencia SIL Open Font License 1.1
+- Instrument Serif — Licencia SIL Open Font License 1.1
+- JetBrains Mono — Licencia SIL Open Font License 1.1
+  (fuentes obtenidas de Fontsource: https://fontsource.org)
