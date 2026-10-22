@@ -124,8 +124,6 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 
 /* ---------- Hero ---------- */
 .hero { min-height: 100svh; padding: 96px var(--pad) 32px; display: flex; flex-direction: column; }
-.hero-top { display: flex; justify-content: space-between; color: var(--muted); }
-.hero-top span:last-child { color: var(--accent); }
 
 .hero-title {
   margin-top: clamp(18px, 4vh, 48px);
@@ -154,7 +152,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 
 /* Animación de entrada (solo con JS; sin JS todo se ve) */
 .js:not(.is-ready) .hero .line-inner { transform: translateY(105%); }
-.js:not(.is-ready) .hero-grid, .js:not(.is-ready) .hero-top, .js:not(.is-ready) .scroll-cue { opacity: 0; }
+.js:not(.is-ready) .hero-grid, .js:not(.is-ready) .scroll-cue { opacity: 0; }
 
 /* ---------- Cinta ---------- */
 .marquee { overflow: hidden; border-block: 1px solid var(--ink); padding: 18px 0; background: var(--ink); color: var(--paper); }
@@ -303,7 +301,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
   .marquee-track { animation: none; }
   *, *::before, *::after { transition: none !important; }
   .js:not(.is-ready) .hero .line-inner { transform: none; }
-  .js:not(.is-ready) .hero-grid, .js:not(.is-ready) .hero-top, .js:not(.is-ready) .scroll-cue { opacity: 1; }
+  .js:not(.is-ready) .hero-grid, .js:not(.is-ready) .scroll-cue { opacity: 1; }
 }
 
 /* ---------- Responsive ---------- */
@@ -334,7 +332,6 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
   .topnav-list a { display: block; padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--line); }
 
   .hero { padding-top: 88px; min-height: auto; }
-  .hero-top { flex-direction: column; gap: 6px; }
   .hero-title { font-size: 22vw; }
   .hero-grid { grid-template-columns: 1fr; margin-top: 32px; }
   .hero-fig { max-width: 320px; }

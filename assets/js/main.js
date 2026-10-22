@@ -17,8 +17,6 @@
     "nav.experience": "Experience",
     "nav.education": "Education",
     "nav.contact": "Contact",
-    "hero.tag": "(Portfolio — 2026)",
-    "hero.status": "● Open to internships",
     "hero.l1": "IT technician who",
     "hero.l2": "learns by doing",
     "hero.l3": ". IT support, systems and, a little more every day, development.",
@@ -70,7 +68,6 @@
     "tico.p4": "Continuous integration and automated releases with GitHub Actions.",
     "link.web": "Visit website",
     "link.code": "Code",
-    "link.try": "Try it",
     "cg.ok": "Exercise passed · 7-day streak",
     "cg.cat": "Web · learn C by playing",
     "cg.tagline": "A gamified website to learn C programming, built from what I learn in class.",
@@ -283,7 +280,7 @@
 
   // Entrada del hero
   var heroLines = document.querySelectorAll(".hero .line-inner");
-  var heroFades = document.querySelectorAll(".hero-top, .hero-grid, .scroll-cue");
+  var heroFades = document.querySelectorAll(".hero-grid, .scroll-cue");
   // y: 0 descarta el desplazamiento en px que GSAP leería del CSS inicial
   gsap.set(heroLines, { y: 0, yPercent: 105 });
   gsap.set(heroFades, { autoAlpha: 0, y: 24 });
