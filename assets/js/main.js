@@ -22,7 +22,7 @@
     "hero.l1": "IT technician who",
     "hero.l2": "learns by doing",
     "hero.l3": ". IT support, systems and, a little more every day, development.",
-    "photo.alt": "Portrait of Víctor Salmerón Gavilán wearing a navy blazer",
+    "photo.alt": "Portrait of Víctor Salmerón Gavilán wearing a black T-shirt",
     "photo.caption": "Fig. 01 — Terrassa, 2026",
     "fact1.k": "(01) Now",
     "fact1.v": "Studying DAM and ASIR at the same time, Colegio Vedruna Vall",
