@@ -22,7 +22,7 @@ assets/js/          boot.js (prepara animaciones) y main.js (idioma, animaciones
 assets/vendor/      GSAP, ScrollTrigger y Lenis
 assets/fonts/       Tipografías
 assets/img/         Foto, proyectos, favicon, textura e imagen para redes (og.png)
-cv/                 Currículums en PDF (sin teléfono)
+cv/                 Currículum en PDF (sin teléfono)
 robots.txt, sitemap.xml   Para que Google encuentre la web
 ```
 
@@ -31,7 +31,7 @@ robots.txt, sitemap.xml   Para que Google encuentre la web
 - Política de seguridad de contenido (CSP): solo se cargan archivos de esta misma web.
 - Sin scripts, fuentes ni servicios de terceros en el navegador. Sin cookies ni rastreadores.
 - El email no aparece escrito en el código: se monta al pulsar el botón, para evitar spam de robots.
-- Sin teléfono ni dirección en la web ni en los CV publicados.
+- Sin teléfono ni dirección en la web ni en el CV publicado.
 - Los enlaces externos se abren con `rel="noopener noreferrer"`.
 - Sin JavaScript, o con "reducir movimiento" activado, todo el contenido se ve igual (sin animaciones).
 
@@ -39,7 +39,7 @@ robots.txt, sitemap.xml   Para que Google encuentre la web
 
 - **Textos en castellano:** en `index.html`.
 - **Textos en inglés:** en `assets/js/main.js`, dentro de `EN`, con la misma clave (`data-i18n`) que en el HTML.
-- **CV:** sustituye los PDF de `cv/` manteniendo el mismo nombre.
+- **CV:** sustituye `cv/cv-victor-salmeron-helpdesk.pdf` manteniendo el mismo nombre.
 
 ## Dominio
 
