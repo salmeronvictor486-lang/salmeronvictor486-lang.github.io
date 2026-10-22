@@ -143,8 +143,8 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 .hero-lede { font-size: clamp(22px, 2.1vw, 34px); line-height: 1.12; letter-spacing: -.02em; max-width: 17em; }
 .hero-lede em { font-size: 1.08em; }
 .hero-fig figcaption { margin-top: 10px; color: var(--muted); }
-.hero-img { overflow: hidden; aspect-ratio: 4 / 5; background: var(--paper-2); }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; filter: grayscale(1) contrast(1.04); transition: filter .8s var(--ease), transform 1.2s var(--ease); }
+.hero-img { overflow: hidden; aspect-ratio: 1 / 1; background: var(--paper-2); }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; filter: grayscale(1) contrast(1.04); transition: filter .8s var(--ease), transform 1.2s var(--ease); }
 .hero-fig:hover .hero-img img { filter: grayscale(0); transform: scale(1.03); }
 .hero-facts { display: grid; gap: 0; border-top: 1px solid var(--ink); }
 .fact { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
