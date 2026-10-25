@@ -270,6 +270,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
   border: 1px solid rgb(238 235 228 / 35%); font-size: 18px; font-weight: 600;
   transition: background-color .3s, color .3s, border-color .3s;
 }
+button.pill { font-family: inherit; color: inherit; background: none; cursor: pointer; }
 .pill:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 .pill-solid { background: var(--accent); border-color: var(--accent); color: #fff; }
 .pill-solid:hover { background: #fff; border-color: #fff; color: var(--ink); }

@@ -17,6 +17,7 @@
     "nav.experience": "Experience",
     "nav.education": "Education",
     "nav.contact": "Contact",
+    "nav.cv": "CV ↓",
     "hero.l1": "IT technician who",
     "hero.l2": "learns by doing",
     "hero.l3": ". IT support, systems and, a little more every day, development.",
@@ -109,11 +110,13 @@
     "cv1.a": "CV",
     "cv1.b": "Help Desk & Systems",
     "cv1.text": "IT support, help desk and systems roles",
-    "cv.sub": "PDF in Spanish.",
+    "cv.sub": "PDF in English.",
     "contact.kicker": "Contact",
     "contact.t1": "Let's talk.",
     "contact.sub": "I'm open to internships, dual training and junior opportunities in IT support, systems or development in Terrassa, Barcelona and the surrounding area.",
     "contact.email": "Send me an email",
+    "contact.copy": "Copy email",
+    "contact.copied": "Email copied ✓",
     "footer.privacy": "No cookies, no trackers",
     "footer.top": "Back to top ↑"
   };
@@ -137,7 +140,9 @@
   // ---------- Idioma ----------
   var textNodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
   var altNodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n-alt]"));
+  var hrefNodes = Array.prototype.slice.call(document.querySelectorAll("[data-href-en]"));
   textNodes.forEach(function (el) { el.dataset.es = el.textContent.trim(); });
+  hrefNodes.forEach(function (el) { el.dataset.hrefEs = el.getAttribute("href"); });
   altNodes.forEach(function (el) { el.dataset.esAlt = el.getAttribute("alt") || ""; });
 
   var langButton = document.querySelector(".lang-toggle");
@@ -154,6 +159,9 @@
     altNodes.forEach(function (el) {
       var key = el.getAttribute("data-i18n-alt");
       el.setAttribute("alt", en && EN[key] ? EN[key] : el.dataset.esAlt);
+    });
+    hrefNodes.forEach(function (el) {
+      el.setAttribute("href", en ? el.getAttribute("data-href-en") : el.dataset.hrefEs);
     });
     html.lang = currentLang;
     document.title = META[currentLang].title;
@@ -229,6 +237,28 @@
       emailShown = true;
       refreshEmailText();
       window.location.href = "mailto:" + address;
+    });
+  }
+
+  // Botón "Copiar email": copia la dirección y la muestra debajo
+  var copyButton = document.querySelector(".copy-email");
+  var copyTimer;
+  if (copyButton) {
+    copyButton.addEventListener("click", function () {
+      var address = buildEmail();
+      if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(address)) return;
+      emailShown = true;
+      refreshEmailText();
+      function done() {
+        copyButton.textContent = currentLang === "en" ? EN["contact.copied"] : "Email copiado ✓";
+        window.clearTimeout(copyTimer);
+        copyTimer = window.setTimeout(function () {
+          copyButton.textContent = currentLang === "en" ? EN["contact.copy"] : copyButton.dataset.es;
+        }, 2500);
+      }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(address).then(done, function () { /* se queda visible debajo para copiarla a mano */ });
+      } catch (e) { /* se queda visible debajo para copiarla a mano */ }
     });
   }
 
