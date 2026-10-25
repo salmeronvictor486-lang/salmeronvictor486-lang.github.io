@@ -9,7 +9,8 @@ Estudiante de DAM y ASIR.
 
 - HTML, CSS y JavaScript, sin frameworks.
 - Animaciones con GSAP + ScrollTrigger y scroll suave con Lenis.
-- Todo alojado en la propia web: sin cookies, rastreadores ni servicios de terceros.
+- Todo alojado en la propia web, sin cookies.
+- Visitas contadas con [GoatCounter](https://www.goatcounter.com/) (anónimo, sin cookies): panel en https://victorsalmeron.goatcounter.com/. También cuenta las descargas del CV y los clics en email, LinkedIn y GitHub.
 - Publicada con GitHub Pages y dominio propio en Cloudflare.
 
 ## Estructura

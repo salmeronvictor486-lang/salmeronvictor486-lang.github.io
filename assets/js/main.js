@@ -117,7 +117,7 @@
     "contact.email": "Send me an email",
     "contact.copy": "Copy email",
     "contact.copied": "Email copied ✓",
-    "footer.privacy": "No cookies, no trackers",
+    "footer.privacy": "No cookies · Anonymous visit counts",
     "footer.top": "Back to top ↑"
   };
 

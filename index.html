@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Seguridad: solo se cargan archivos de esta misma web (librerías y fuentes incluidas). Sin cookies ni rastreadores. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; manifest-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+  <!-- Seguridad: solo se cargan archivos de esta misma web (librerías y fuentes incluidas), más el contador de visitas
+       de GoatCounter (anónimo y sin cookies). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://gc.zgo.at; style-src 'self'; img-src 'self' https://victorsalmeron.goatcounter.com; font-src 'self'; manifest-src 'self'; connect-src https://victorsalmeron.goatcounter.com; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Víctor Salmerón Gavilán · Soporte IT, Sistemas y Desarrollo</title>
@@ -47,6 +48,8 @@
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/vendor/lenis.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <!-- Contador de visitas (GoatCounter): sin cookies ni datos personales -->
+  <script data-goatcounter="https://victorsalmeron.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido" data-i18n="skip">Saltar al contenido</a>
@@ -61,7 +64,7 @@
         <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li>
         <li><a href="#formacion" data-i18n="nav.education">Formación</a></li>
         <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
-        <li><a href="cv/cv-victor-salmeron-helpdesk.pdf" download data-href-en="cv/cv-victor-salmeron-helpdesk-en.pdf" data-i18n="nav.cv">CV ↓</a></li>
+        <li><a href="cv/cv-victor-salmeron-helpdesk.pdf" download data-href-en="cv/cv-victor-salmeron-helpdesk-en.pdf" data-goatcounter-click="descarga-cv-menu" data-goatcounter-title="Descarga del CV (menú)" data-i18n="nav.cv">CV ↓</a></li>
       </ul>
       <button class="lang-toggle mono" type="button" aria-label="Switch to English">
         <span class="lang-opt" data-lang-opt="es">ES</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-opt" data-lang-opt="en">EN</span>
@@ -334,7 +337,7 @@
       </header>
       <ul class="cv-rows">
         <li class="reveal">
-          <a class="cv-row" href="cv/cv-victor-salmeron-helpdesk.pdf" download data-href-en="cv/cv-victor-salmeron-helpdesk-en.pdf" data-cursor="download">
+          <a class="cv-row" href="cv/cv-victor-salmeron-helpdesk.pdf" download data-href-en="cv/cv-victor-salmeron-helpdesk-en.pdf" data-goatcounter-click="descarga-cv" data-goatcounter-title="Descarga del CV" data-cursor="download">
             <span class="cv-title"><span data-i18n="cv1.a">CV</span> <em data-i18n="cv1.b">Help Desk y Sistemas</em></span>
             <span class="mono cv-desc" data-i18n="cv1.text">Soporte IT, helpdesk y técnico de sistemas</span>
             <span class="mono cv-dl">PDF ↓</span>
@@ -355,18 +358,18 @@
       </h2>
       <p class="contact-sub" data-i18n="contact.sub">Estoy abierto a prácticas, formación dual y oportunidades junior en soporte IT, sistemas o desarrollo en Terrassa, Barcelona y alrededores.</p>
       <div class="contact-actions">
-        <a class="pill pill-solid email-link magnetic" href="#contacto" data-u="684rotcivnoremlas" data-d="moc.liamg">
+        <a class="pill pill-solid email-link magnetic" href="#contacto" data-u="684rotcivnoremlas" data-d="moc.liamg" data-goatcounter-click="email" data-goatcounter-title="Botón de email">
           <span data-i18n="contact.email">Escríbeme un email</span> ↗
         </a>
-        <button class="pill copy-email magnetic" type="button" data-i18n="contact.copy">Copiar email</button>
-        <a class="pill magnetic" href="https://www.linkedin.com/in/v%C3%ADctor-salmer%C3%B3n-gavil%C3%A1n-a3845b3b8/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a class="pill magnetic" href="https://github.com/salmeronvictor486-lang" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <button class="pill copy-email magnetic" type="button" data-goatcounter-click="copiar-email" data-goatcounter-title="Copiar email" data-i18n="contact.copy">Copiar email</button>
+        <a class="pill magnetic" href="https://www.linkedin.com/in/v%C3%ADctor-salmer%C3%B3n-gavil%C3%A1n-a3845b3b8/" target="_blank" rel="noopener noreferrer" data-goatcounter-click="linkedin" data-goatcounter-title="LinkedIn"><svg class="pill-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn ↗</a>
+        <a class="pill magnetic" href="https://github.com/salmeronvictor486-lang" target="_blank" rel="noopener noreferrer" data-goatcounter-click="github" data-goatcounter-title="GitHub"><svg class="pill-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub ↗</a>
       </div>
       <p class="email-text mono" aria-live="polite"><noscript>salmeronvictor486 [arroba] gmail [punto] com</noscript></p>
 
       <footer class="footer mono">
         <span>© 2026 Víctor Salmerón Gavilán</span>
-        <span data-i18n="footer.privacy">Sin cookies ni rastreadores</span>
+        <span data-i18n="footer.privacy">Sin cookies · Visitas contadas de forma anónima</span>
         <a href="#top" data-i18n="footer.top">Volver arriba ↑</a>
       </footer>
     </section>
