@@ -60,7 +60,7 @@
     "proj.t1": "Things",
     "proj.t2": "I've built",
     "proj.sub": "Personal projects developed with AI assistance (Claude Code): I come up with the idea, define what they do, review the changes, test them and release them.",
-    "tico.video": "TICO ad: a little robot that lives at the top of your screen, chats with you and looks at your screen when you ask it to",
+    "tico.alt": "TICO splash screen: a small white robot with turquoise eyes",
     "tico.cat": "Desktop app · Windows / macOS / Linux",
     "tico.tagline": "A small robot that lives at the top of your screen, chats with you and, only when you ask, looks at your screen to help.",
     "tico.p1": "6 released versions (latest: 1.2.0) with installers for every system and a portable version.",
@@ -140,12 +140,10 @@
   // ---------- Idioma ----------
   var textNodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
   var altNodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n-alt]"));
-  var ariaNodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n-aria]"));
   var hrefNodes = Array.prototype.slice.call(document.querySelectorAll("[data-href-en]"));
   textNodes.forEach(function (el) { el.dataset.es = el.textContent.trim(); });
   hrefNodes.forEach(function (el) { el.dataset.hrefEs = el.getAttribute("href"); });
   altNodes.forEach(function (el) { el.dataset.esAlt = el.getAttribute("alt") || ""; });
-  ariaNodes.forEach(function (el) { el.dataset.esAria = el.getAttribute("aria-label") || ""; });
 
   var langButton = document.querySelector(".lang-toggle");
   var currentLang = "es";
@@ -161,10 +159,6 @@
     altNodes.forEach(function (el) {
       var key = el.getAttribute("data-i18n-alt");
       el.setAttribute("alt", en && EN[key] ? EN[key] : el.dataset.esAlt);
-    });
-    ariaNodes.forEach(function (el) {
-      var key = el.getAttribute("data-i18n-aria");
-      el.setAttribute("aria-label", en && EN[key] ? EN[key] : el.dataset.esAria);
     });
     hrefNodes.forEach(function (el) {
       el.setAttribute("href", en ? el.getAttribute("data-href-en") : el.dataset.hrefEs);
@@ -266,22 +260,6 @@
         if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(address).then(done, function () { /* se queda visible debajo para copiarla a mano */ });
       } catch (e) { /* se queda visible debajo para copiarla a mano */ }
     });
-  }
-
-  // ---------- Vídeo de TICO: se reproduce solo mientras se ve ----------
-  // Sin sonido y en bucle. Con "reducir movimiento" no arranca solo: se queda la imagen fija.
-  var video = document.querySelector(".work-video");
-  if (video && !reduceMotion && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var playing = video.play();
-          if (playing && playing.catch) playing.catch(function () { /* el navegador no deja reproducir: se queda la imagen */ });
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.35 }).observe(video);
   }
 
   // ---------- Frase de "Sobre mí" partida en palabras ----------
