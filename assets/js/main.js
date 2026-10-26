@@ -121,11 +121,6 @@
     "footer.top": "Back to top ↑"
   };
 
-  var CURSOR_LABELS = {
-    es: { view: "Abrir", download: "PDF" },
-    en: { view: "Open", download: "PDF" }
-  };
-
   var META = {
     es: {
       title: document.title,
@@ -395,24 +390,6 @@
       });
       btn.addEventListener("mouseleave", function () { gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: "elastic.out(1, 0.4)" }); });
     });
-
-    // Cursor personalizado
-    var cursor = document.querySelector(".cursor");
-    var label = cursor && cursor.querySelector(".cursor-label");
-    if (cursor) {
-      html.classList.add("has-cursor");
-      var xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "power3" });
-      var yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3" });
-      window.addEventListener("mousemove", function (ev) { xTo(ev.clientX); yTo(ev.clientY); cursor.classList.remove("is-hidden"); });
-      document.addEventListener("mouseleave", function () { cursor.classList.add("is-hidden"); });
-      document.querySelectorAll("[data-cursor]").forEach(function (el) {
-        el.addEventListener("mouseenter", function () {
-          if (label) label.textContent = CURSOR_LABELS[currentLang][el.getAttribute("data-cursor")] || "";
-          cursor.classList.add("is-big");
-        });
-        el.addEventListener("mouseleave", function () { cursor.classList.remove("is-big"); });
-      });
-    }
   }
 
   // Recalcular posiciones cuando cargan las fuentes
