@@ -160,6 +160,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 .marquee-group { display: flex; align-items: center; gap: 28px; padding-right: 28px; font-size: clamp(28px, 4vw, 56px); font-weight: 600; letter-spacing: -.03em; white-space: nowrap; }
 .marquee-group em { font-size: 1.1em; }
 .marquee-group i { font-style: normal; color: var(--accent); font-size: .6em; }
+.marquee-group i svg { display: block; width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Secciones ---------- */
