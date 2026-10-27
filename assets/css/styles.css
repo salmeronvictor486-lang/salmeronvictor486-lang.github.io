@@ -171,6 +171,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 .sec-label { color: var(--muted); }
 .big-title { font-size: clamp(40px, 6.4vw, 104px); font-weight: 600; line-height: .95; letter-spacing: -.045em; max-width: 14ch; }
 .big-title em { display: block; font-size: 1.04em; letter-spacing: -.01em; }
+.big-title-wide { max-width: none; }
 .sec-note { margin-top: 24px; max-width: 46ch; color: var(--ink-2); font-size: 17px; }
 
 /* 01 Sobre mí */
