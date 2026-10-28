@@ -31,3 +31,9 @@ cv/fuente/          Plantillas HTML de los CV
 3. Guarda el PDF en `cv/` con el mismo nombre que el actual:
    - `cv-victor-salmeron-helpdesk.pdf` (castellano)
    - `cv-victor-salmeron-helpdesk-en.pdf` (inglés)
+
+## Versiones anteriores
+
+- **v1 · diseño editorial** (hasta el 28/10/2026): copia completa en `v1/`, visible en https://victorsalmeron.dev/v1/ (Google no la indexa).
+  Para volver a ella: copiar `v1/index.html`, `v1/assets/` y `v1/cv/` a la raíz (y quitar la línea `<meta name="robots" content="noindex, nofollow">` del `index.html`).
+  También está en el historial de git, en el commit `31c766b`.
