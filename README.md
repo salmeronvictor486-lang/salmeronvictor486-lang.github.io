@@ -21,6 +21,7 @@ assets/js/main.js   Idioma inglés (EN), animaciones, menú y email
 assets/css/         Estilos
 assets/img/         Foto, imágenes de proyectos y para redes
 cv/                 CV en PDF (castellano y en inglés)
+dragon-fall/        Juego Dragon Fall (copia publicada; el código fuente está en el repo Dragon-Fall)
 cv/fuente/          Plantillas HTML de los CV
 ```
 
