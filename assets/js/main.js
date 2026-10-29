@@ -75,7 +75,7 @@
     "cg.p1": "16 chapters, 118 lessons and 22 challenges with automatic grading, XP, streaks and badges.",
     "cg.p2": "Syllabus: variables, loops, arrays, functions, pointers and dynamic memory.",
     "cg.p3": "A C interpreter that explains common beginner errors in Spanish, validated with tests against gcc.",
-    "df.alt": "Dragon Fall gameplay: pixel-art Super Saiyan Goku fires a Kamehameha at Raditz, surrounded by Saibamen",
+    "df.alt": "Dragon Fall title screen: pixel-art logo over a sunset, Goku on the Flying Nimbus, and Super Saiyan Goku and Vegeta beside the menu",
     "df.cat": "Web game · browser and mobile",
     "df.tagline": "A pixel-art survivor game set in the Dragon Ball universe: pick a fighter, survive the waves, gain skills as you level up and open capsules to get new characters.",
     "df.p1": "Dozens of Dragon Ball Z and Super characters with rarities, transformations, and 5 sagas with 20 bosses.",
