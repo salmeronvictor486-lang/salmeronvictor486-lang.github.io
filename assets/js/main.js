@@ -82,6 +82,8 @@
     "df.p2": "Every sprite is drawn in code: the whole game fits in a single HTML file, with no images.",
     "df.p3": "Automatic progress saving and an account system ready to go with Firebase.",
     "link.play": "Play",
+    "folio.label": "Project index",
+    "folio.hint": "Scroll or drag to explore",
     "edu.kicker": "Education",
     "edu.t1": "Study, practice, repeat.",
     "edu.t2": "A little more every day.",
@@ -145,6 +147,8 @@
   var hrefNodes = Array.prototype.slice.call(document.querySelectorAll("[data-href-en]"));
   textNodes.forEach(function (el) { el.dataset.es = el.textContent.trim(); });
   hrefNodes.forEach(function (el) { el.dataset.hrefEs = el.getAttribute("href"); });
+  var ariaNodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n-aria]"));
+  ariaNodes.forEach(function (el) { el.dataset.esAria = el.getAttribute("aria-label") || ""; });
   altNodes.forEach(function (el) { el.dataset.esAlt = el.getAttribute("alt") || ""; });
 
   var langButton = document.querySelector(".lang-toggle");
@@ -161,6 +165,10 @@
     altNodes.forEach(function (el) {
       var key = el.getAttribute("data-i18n-alt");
       el.setAttribute("alt", en && EN[key] ? EN[key] : el.dataset.esAlt);
+    });
+    ariaNodes.forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria");
+      el.setAttribute("aria-label", en && EN[key] ? EN[key] : el.dataset.esAria);
     });
     hrefNodes.forEach(function (el) {
       el.setAttribute("href", en ? el.getAttribute("data-href-en") : el.dataset.hrefEs);
@@ -309,6 +317,89 @@
     gsap.ticker.lagSmoothing(0);
   }
   initAnchors(lenis);
+
+  // ---------- Índice 3D de proyectos (inspirado en «FOLIO — 3D project index») ----------
+  // Las capturas flotan en profundidad, inclinadas a un lado y a otro; el scroll (o arrastrar con
+  // el ratón) mueve la cámara hacia delante y la tarjeta que queda enfrente muestra su nombre abajo.
+  var folio = document.querySelector(".folio");
+  if (folio) {
+    var folioSticky = folio.querySelector(".folio-sticky");
+    var folioCards = Array.prototype.slice.call(folio.querySelectorAll(".folio-card"));
+    var folioNum = folio.querySelector(".folio-num");
+    var folioName = folio.querySelector(".folio-name");
+    var folioCat = folio.querySelector(".folio-cat");
+    var folioCurrent = folio.querySelector(".folio-current");
+    var narrow = window.matchMedia("(max-width: 760px)");
+    var GAP = 1100;
+    var folioProgress = 0;
+    var folioActive = -1;
+    var clamp01 = function (v) { return Math.max(0, Math.min(1, v)); };
+
+    folio.classList.add("is-3d");
+
+    var showFolioInfo = function () {
+      var card = folioCards[folioActive];
+      if (!card) return;
+      folioNum.textContent = card.getAttribute("data-num");
+      folioName.textContent = card.getAttribute("data-name");
+      folioCat.textContent = card.getAttribute(currentLang === "en" ? "data-cat-en" : "data-cat");
+      folioCurrent.textContent = String(folioActive + 1).padStart(2, "0");
+    };
+
+    var renderFolio = function () {
+      var cam = folioProgress * (folioCards.length - 1) * GAP;
+      folioCards.forEach(function (card, i) {
+        var side = i % 2 ? 1 : -1;
+        var d = cam - i * GAP; // 0: justo delante; positivo: ya la hemos pasado; negativo: más al fondo
+        var x = (narrow.matches ? 4 : 15) * side * (d > 0 ? 1 + d / 700 : 1);
+        var y = 3 * -side;
+        var opacity = d > 0 ? clamp01(1 - d / (GAP * 0.55)) : clamp01((d + 2.8 * GAP) / (1.2 * GAP));
+        card.style.transform = "translate(-50%, -50%) translate3d(" + x.toFixed(2) + "vw," + y + "vh," + d.toFixed(1) + "px) rotateY(" + (-side * 16) + "deg) rotateX(4deg)";
+        card.style.opacity = opacity.toFixed(3);
+        card.style.zIndex = String(1000 + Math.round(d));
+        card.style.pointerEvents = opacity > 0.4 ? "auto" : "none";
+      });
+      var active = Math.round(folioProgress * (folioCards.length - 1));
+      if (active !== folioActive) { folioActive = active; showFolioInfo(); }
+    };
+
+    ScrollTrigger.create({
+      trigger: folio, start: "top top", end: "bottom bottom",
+      onUpdate: function (self) { folioProgress = self.progress; renderFolio(); }
+    });
+    renderFolio();
+    narrow.addEventListener("change", renderFolio);
+    onLangChange.push(showFolioInfo);
+
+    // Arrastrar con el ratón (en móvil ya se desliza con el dedo)
+    var dragging = false, dragMoved = 0, lastX = 0, lastY = 0;
+    folioSticky.addEventListener("pointerdown", function (ev) {
+      if (ev.pointerType !== "mouse" || ev.button !== 0) return;
+      ev.preventDefault();
+      dragging = true; dragMoved = 0; lastX = ev.clientX; lastY = ev.clientY;
+      folioSticky.classList.add("is-dragging");
+    });
+    window.addEventListener("pointermove", function (ev) {
+      if (!dragging) return;
+      var dx = ev.clientX - lastX, dy = ev.clientY - lastY;
+      lastX = ev.clientX; lastY = ev.clientY;
+      dragMoved += Math.abs(dx) + Math.abs(dy);
+      var delta = -(dx + dy) * 2.2;
+      if (lenis) lenis.scrollTo(lenis.scroll + delta, { immediate: true });
+      else window.scrollBy(0, delta);
+    });
+    window.addEventListener("pointerup", function () {
+      if (!dragging) return;
+      dragging = false;
+      folioSticky.classList.remove("is-dragging");
+    });
+    // Si has arrastrado, soltar encima de una tarjeta no la abre
+    folioCards.forEach(function (card) {
+      card.addEventListener("click", function (ev) {
+        if (dragMoved > 8) { ev.preventDefault(); ev.stopImmediatePropagation(); }
+      }, true);
+    });
+  }
 
   // Entrada del hero
   var heroLines = document.querySelectorAll(".hero .line-inner");

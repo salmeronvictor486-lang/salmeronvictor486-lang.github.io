@@ -200,7 +200,34 @@
       <h2 class="big-title reveal"><span data-i18n="proj.t1">Cosas que</span> <em data-i18n="proj.t2">he construido</em></h2>
       <p class="sec-note reveal" data-i18n="proj.sub">Proyectos personales desarrollados con asistencia de IA (Claude Code): yo los ideo, defino qué hacen, reviso los cambios, los pruebo y los publico.</p>
 
-      <article class="work">
+      <!-- Índice 3D de proyectos: al hacer scroll o arrastrar, la cámara viaja entre las capturas -->
+      <div class="folio" aria-label="Índice de proyectos" data-i18n-aria="folio.label">
+        <div class="folio-sticky">
+          <div class="folio-world">
+            <a class="folio-card" href="#p-tico" data-num="P—01" data-name="TICO AI Assistant" data-cat="App de escritorio" data-cat-en="Desktop app">
+              <img src="assets/img/tico-2026.jpg" width="1200" height="675" alt="TICO AI Assistant" loading="lazy">
+            </a>
+            <a class="folio-card" href="#p-cgame" data-num="P—02" data-name="C Gamechanger" data-cat="Web · aprender C jugando" data-cat-en="Web · learn C by playing">
+              <img src="assets/img/cgame-card.webp" width="1200" height="675" alt="C Gamechanger" loading="lazy">
+            </a>
+            <a class="folio-card" href="#p-dragon" data-num="P—03" data-name="Dragon Fall" data-cat="Videojuego web" data-cat-en="Web game">
+              <img src="assets/img/dragon-fall.webp" width="1200" height="675" alt="Dragon Fall" loading="lazy">
+            </a>
+            <a class="folio-card" href="https://github.com/salmeronvictor486-lang/salmeronvictor486-lang.github.io" target="_blank" rel="noopener noreferrer" data-num="P—04" data-name="victorsalmeron.dev" data-cat="Esta web · código" data-cat-en="This website · code">
+              <img src="assets/img/web-card.webp" width="1200" height="675" alt="victorsalmeron.dev" loading="lazy">
+            </a>
+          </div>
+          <div class="folio-info" aria-hidden="true">
+            <span class="mono folio-num">P—01</span>
+            <span class="folio-name">TICO AI Assistant</span>
+            <span class="mono folio-cat">App de escritorio</span>
+          </div>
+          <p class="mono folio-hint" aria-hidden="true" data-i18n="folio.hint">Desliza o arrastra para explorar</p>
+          <p class="mono folio-count" aria-hidden="true"><span class="folio-current">01</span> / 04</p>
+        </div>
+      </div>
+
+      <article class="work" id="p-tico">
         <a class="work-media" href="https://victorsalmeron.dev/TICO-AI-ASSITANT/" target="_blank" rel="noopener noreferrer" aria-label="TICO AI Assistant — web">
           <img class="parallax" src="assets/img/tico-2026.jpg" width="1200" height="675" alt="Pantalla de presentación de TICO: un pequeño robot blanco con ojos turquesa" data-i18n-alt="tico.alt" loading="lazy">
         </a>
@@ -222,7 +249,7 @@
         </div>
       </article>
 
-      <article class="work work-flip">
+      <article class="work work-flip" id="p-cgame">
         <div class="work-media work-media-code">
           <div class="code-card parallax">
             <div class="code-bar mono"><img src="assets/img/cgame.svg" alt="" width="16" height="16"> hola.c <span>+50 XP</span></div>
@@ -250,7 +277,7 @@
           </p>
         </div>
       </article>
-      <article class="work">
+      <article class="work" id="p-dragon">
         <a class="work-media" href="dragon-fall/" target="_blank" rel="noopener" aria-label="Dragon Fall — jugar" data-goatcounter-click="jugar-dragon-fall-imagen" data-goatcounter-title="Jugar a Dragon Fall (imagen)">
           <img class="parallax" src="assets/img/dragon-fall.webp" width="1200" height="675" alt="Pantalla de título de Dragon Fall: logo pixel art sobre un atardecer, Goku en la nube Kinton y Goku y Vegeta Super Saiyan a los lados del menú" data-i18n-alt="df.alt" loading="lazy">
         </a>
