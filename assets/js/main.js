@@ -69,12 +69,12 @@
     "tico.p4": "Continuous integration and automated releases with GitHub Actions.",
     "link.web": "Visit website",
     "link.code": "Code",
-    "cg.ok": "Exercise passed · 7-day streak",
-    "cg.cat": "Web · learn C by playing",
-    "cg.tagline": "A gamified website to learn C programming, built from what I learn in class.",
-    "cg.p1": "16 chapters, 118 lessons and 22 challenges with automatic grading, XP, streaks and badges.",
-    "cg.p2": "Syllabus: variables, loops, arrays, functions, pointers and dynamic memory.",
-    "cg.p3": "A C interpreter that explains common beginner errors in Spanish, validated with tests against gcc.",
+    "hl.alt": "Raspberry Pi 5 with active cooler and its official case, next to the output of the pihole status command",
+    "hl.cat": "Homelab · Raspberry Pi 5 · in progress",
+    "hl.tagline": "My own home server: a Raspberry Pi 5 that blocks ads across the whole network and stores the family's files.",
+    "hl.p1": "Pi-hole as the network's DNS server: it blocks ads and trackers on every device, with nothing to install on them.",
+    "hl.p2": "A NAS server on the same Raspberry Pi to store and share files over the local network.",
+    "hl.p3": "Hardware build: 4 GB Raspberry Pi 5 with active cooling, in its official case.",
     "df.alt": "Dragon Fall title screen: pixel-art logo over a sunset, Goku on the Flying Nimbus, and Super Saiyan Goku and Vegeta beside the menu",
     "df.cat": "Web game · browser and mobile",
     "df.tagline": "A pixel-art survivor game set in the Dragon Ball universe: pick a fighter, survive the waves, gain skills as you level up and open capsules to get new characters.",
@@ -105,6 +105,7 @@
     "sk.backups": "Backups",
     "sk.maintenance": "Preventive maintenance",
     "sk3.title": "Networking & security",
+    "sk.pihole": "Pi-hole (DNS-level blocking)",
     "sk.lan": "Local networks (LAN)",
     "sk.monitoring": "Security monitoring",
     "sk4.title": "Development",
@@ -292,6 +293,80 @@
     return words;
   }
 
+  // ---------- Texto que se «descifra» (inspirado en «CIPHER — Signal scramble») ----------
+  // Las letras aparecen revueltas y se van fijando de izquierda a derecha. Se construye con nodos
+  // de texto y <span>, nunca con innerHTML. El texto final se pide al terminar (finalText), así
+  // un cambio de idioma a mitad de animación acaba siempre en el idioma correcto.
+  var GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+=/<>";
+  function scramble(el, finalText, duration) {
+    var id = (el.__scr || 0) + 1;
+    el.__scr = id;
+    if (reduceMotion) { el.textContent = finalText(); return; }
+    var start = performance.now();
+    duration = duration || 900;
+    (function frame(now) {
+      if (el.__scr !== id) return;
+      var target = finalText();
+      var k = Math.min(1, (now - start) / duration);
+      var fixed = Math.floor(target.length * k);
+      el.textContent = target.slice(0, fixed);
+      if (k < 1) {
+        var noise = document.createElement("span");
+        noise.className = "scr";
+        noise.textContent = target.slice(fixed).replace(/\S/g, function () { return GLYPHS[Math.floor(Math.random() * GLYPHS.length)]; });
+        el.appendChild(noise);
+        requestAnimationFrame(frame);
+      }
+    })(start);
+  }
+  function i18nText(el) {
+    var key = el.getAttribute("data-i18n");
+    return function () { return currentLang === "en" && EN[key] ? EN[key] : el.dataset.es; };
+  }
+
+  // Los títulos de sección se descifran la primera vez que aparecen en pantalla
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    var labelObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        labelObserver.unobserve(entry.target);
+        window.setTimeout(function () { scramble(entry.target, i18nText(entry.target), 1000); }, 250);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll(".sec-label[data-i18n], .contact-head [data-i18n]").forEach(function (el) { labelObserver.observe(el); });
+  }
+
+  // ---------- Cinta curva (inspirada en «AIRWAVE — curved ticker») ----------
+  // El texto avanza solo por la onda y se acelera un poco al hacer scroll; se para cuando no se ve.
+  var ribbonPath = document.querySelector(".ribbon textPath");
+  var ribbonText = document.querySelector(".ribbon-text");
+  if (ribbonPath && ribbonText && !reduceMotion) {
+    var ribbonOffset = 0, ribbonBoost = 0, ribbonVisible = true, ribbonLast = 0, lastScrollY = window.scrollY;
+    var groupLength = function () { return ribbonText.getComputedTextLength() / 3; };
+    var ribbonGroup = groupLength();
+    onLangChange.push(function () { ribbonGroup = groupLength(); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ribbonGroup = groupLength(); });
+    window.addEventListener("scroll", function () {
+      ribbonBoost = Math.min(18, ribbonBoost + Math.abs(window.scrollY - lastScrollY) * 0.05);
+      lastScrollY = window.scrollY;
+    }, { passive: true });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) { ribbonVisible = entries[0].isIntersecting; })
+        .observe(document.querySelector(".ribbon"));
+    }
+    (function ribbonFrame(now) {
+      var dt = Math.min(64, now - (ribbonLast || now));
+      ribbonLast = now;
+      if (ribbonVisible && ribbonGroup > 0) {
+        ribbonOffset -= dt * (0.06 + ribbonBoost * 0.02);
+        if (ribbonOffset <= -ribbonGroup) ribbonOffset += ribbonGroup;
+        ribbonPath.setAttribute("startOffset", ribbonOffset.toFixed(1));
+      }
+      ribbonBoost *= 0.92;
+      requestAnimationFrame(ribbonFrame);
+    })(performance.now());
+  }
+
   // ---------- Idioma inicial ----------
   var saved = null;
   try { saved = localStorage.getItem("lang"); } catch (e) { saved = null; }
@@ -341,8 +416,8 @@
       var card = folioCards[folioActive];
       if (!card) return;
       folioNum.textContent = card.getAttribute("data-num");
-      folioName.textContent = card.getAttribute("data-name");
-      folioCat.textContent = card.getAttribute(currentLang === "en" ? "data-cat-en" : "data-cat");
+      scramble(folioName, function () { return card.getAttribute("data-name"); }, 600);
+      scramble(folioCat, function () { return card.getAttribute(currentLang === "en" ? "data-cat-en" : "data-cat"); }, 600);
       folioCurrent.textContent = String(folioActive + 1).padStart(2, "0");
     };
 

@@ -155,13 +155,6 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 .js:not(.is-ready) .hero-grid, .js:not(.is-ready) .scroll-cue { opacity: 0; }
 
 /* ---------- Cinta ---------- */
-.marquee { overflow: hidden; border-block: 1px solid var(--ink); padding: 18px 0; background: var(--ink); color: var(--paper); }
-.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
-.marquee-group { display: flex; align-items: center; gap: 28px; padding-right: 28px; font-size: clamp(28px, 4vw, 56px); font-weight: 600; letter-spacing: -.03em; white-space: nowrap; }
-.marquee-group em { font-size: 1.1em; }
-.marquee-group i { font-style: normal; color: var(--accent); font-size: .6em; }
-.marquee-group i svg { display: block; width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
-@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Secciones ---------- */
 .section { padding: clamp(80px, 12vw, 160px) var(--pad); }
@@ -204,14 +197,6 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 .work-flip .work-media { order: 2; }
 .work-media { display: block; position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #070b0c; }
 .work-media img.parallax { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; }
-.work-media-code { display: grid; place-items: center; background: var(--paper-2); }
-.code-card { width: min(440px, 84%); background: var(--ink); color: #e9e6df; box-shadow: 18px 18px 0 var(--accent); }
-.code-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid rgb(255 255 255 / 10%); color: #a8a59d; font-size: 11.5px; }
-.code-bar img { image-rendering: pixelated; }
-.code-bar span { margin-left: auto; color: #ffd166; }
-.code-card pre { margin: 0; padding: 18px; font-size: 13.5px; line-height: 1.7; text-transform: none; overflow-x: auto; }
-.c-k { color: #9aa4ff; } .c-t { color: #7dd3c0; } .c-s { color: #ffd166; }
-.code-ok { padding: 0 18px 16px; color: #7dd3c0; font-size: 11.5px; }
 .work-meta { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
 .work-title { margin-top: 20px; font-size: clamp(44px, 5.6vw, 92px); font-weight: 650; letter-spacing: -.05em; line-height: .9; }
 .work-title em { font-size: .92em; letter-spacing: -.02em; }
@@ -286,7 +271,6 @@ button.pill { font-family: inherit; color: inherit; background: none; cursor: po
 
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
   *, *::before, *::after { transition: none !important; }
   .js:not(.is-ready) .hero .line-inner { transform: none; }
   .js:not(.is-ready) .hero-grid, .js:not(.is-ready) .scroll-cue { opacity: 1; }
@@ -375,3 +359,13 @@ button.pill { font-family: inherit; color: inherit; background: none; cursor: po
   .folio.is-3d .folio-hint { left: var(--pad); transform: none; bottom: 40px; }
   .folio.is-3d .folio-count { bottom: 40px; }
 }
+
+/* ---------- Cinta curva (inspirada en «AIRWAVE — curved ticker») ---------- */
+.ribbon { overflow: hidden; margin-block: clamp(-10px, -1vw, 0px); }
+.ribbon-svg { display: block; width: 100%; height: clamp(150px, 18vw, 260px); overflow: visible; }
+.ribbon-band { fill: none; stroke: var(--ink); stroke-width: 76; }
+.ribbon-shadow { fill: none; stroke: var(--accent); stroke-width: 76; transform: translate(0, 14px); opacity: .9; }
+.ribbon-text { font-family: var(--sans); font-size: 46px; font-weight: 650; letter-spacing: -.02em; fill: var(--paper); }
+.ribbon-em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 52px; letter-spacing: 0; }
+.ribbon-sep { fill: var(--accent); font-family: var(--sans); }
+.scr { color: var(--accent); }
