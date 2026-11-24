@@ -22,13 +22,13 @@
     "hero.l2": "learns by doing",
     "hero.l3": ". IT support, systems and, a little more every day, development.",
     "photo.alt": "Portrait of Víctor Salmerón Gavilán wearing a black T-shirt",
-    "photo.caption": "Fig. 01 — Terrassa, 2026",
+    "photo.caption": "Fig. 01 — Barcelona, 2026",
     "fact1.k": "(01) Now",
     "fact1.v": "Studying DAM and ASIR at the same time, Colegio Vedruna Vall",
     "fact2.k": "(02) Before",
     "fact2.v": "IT technician at CASARRAMONA, 9 months",
     "fact3.k": "(03) Base",
-    "fact3.v": "SMR at Salesians Terrassa, average grade 8/10",
+    "fact3.v": "SMR at Salesians, average grade 8/10",
     "hero.scroll": "↓ Scroll",
     "mq.servers": "servers",
     "mq.networks": "networking",
@@ -38,7 +38,7 @@
     "st.a": "I'm a systems and networks technician studying",
     "st.b": "two higher degrees at once",
     "st.c": "and I've spent 9 months solving real problems for real clients. I learn from every mistake until I understand its cause.",
-    "about.p1": "I hold a vocational degree in Microcomputer Systems and Networks (SMR), and I'm currently studying two higher vocational degrees at the same time: Multiplatform Application Development (DAM) and Network Systems Administration (ASIR) at Colegio Vedruna Vall, Terrassa.",
+    "about.p1": "I hold a vocational degree in Microcomputer Systems and Networks (SMR), and I'm currently studying two higher vocational degrees at the same time: Multiplatform Application Development (DAM) and Network Systems Administration (ASIR) at Colegio Vedruna Vall.",
     "about.p3": "I'm learning C++, and I use AI (Claude Code) as a development tool in my personal projects. My goal is to study Computer Engineering.",
     "value1.title": "Active learning",
     "value1.text": "I build things, test them and teach myself new technologies, such as generative AI.",
@@ -48,7 +48,7 @@
     "value3.text": "I study two higher vocational degrees at the same time, with organisation and autonomy.",
     "exp.kicker": "Experience",
     "job.months": "months of real IT support",
-    "job.dates": "10.2025 — 06.2026 · Terrassa · On-site",
+    "job.dates": "10.2025 — 06.2026 · Barcelona · On-site",
     "job.role": "IT Technician",
     "job.type": "paid dual training",
     "job.l1": "Help Desk support for clients: troubleshooting and resolving incidents, installing Microsoft Office and removing unwanted software.",
@@ -123,7 +123,7 @@
     "cv.sub": "PDF in English.",
     "contact.kicker": "Contact",
     "contact.t1": "Let's talk.",
-    "contact.sub": "I'm open to internships, dual training and junior opportunities in IT support, systems or development in Terrassa, Barcelona and the surrounding area.",
+    "contact.sub": "I'm open to internships, dual training and junior opportunities in IT support, systems or development in Barcelona and the surrounding area.",
     "contact.email": "Send me an email",
     "contact.copy": "Copy email",
     "contact.copied": "Email copied ✓",
@@ -138,7 +138,7 @@
     },
     en: {
       title: "Víctor Salmerón Gavilán · IT Support, Systems & Development",
-      description: "Portfolio of Víctor Salmerón Gavilán: IT technician in Terrassa (Barcelona), DAM & ASIR student, with experience in Help Desk support, servers and cybersecurity. Projects, CV and contact."
+      description: "Portfolio of Víctor Salmerón Gavilán: IT technician in Barcelona, DAM & ASIR student, with experience in Help Desk support, servers and cybersecurity. Projects, CV and contact."
     }
   };
 
@@ -193,7 +193,7 @@
     langButton.addEventListener("click", function () { setLang(currentLang === "es" ? "en" : "es"); });
   }
 
-  // ---------- Reloj de Terrassa ----------
+  // ---------- Reloj (hora de Barcelona) ----------
   var clock = document.querySelector(".clock-time");
   function tick() {
     if (!clock) return;

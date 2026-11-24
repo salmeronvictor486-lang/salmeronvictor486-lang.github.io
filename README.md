@@ -1,6 +1,6 @@
 # Víctor Salmerón Gavilán · Portfolio
 
-Técnico informático en Terrassa (Barcelona): soporte IT, sistemas y, cada día un poco más, desarrollo.
+Técnico informático en Barcelona: soporte IT, sistemas y, cada día un poco más, desarrollo.
 Estudiante de DAM y ASIR.
 
 **Web:** https://victorsalmeron.dev/
