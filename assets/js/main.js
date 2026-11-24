@@ -336,37 +336,6 @@
     document.querySelectorAll(".sec-label[data-i18n], .contact-head [data-i18n]").forEach(function (el) { labelObserver.observe(el); });
   }
 
-  // ---------- Cinta curva (inspirada en «AIRWAVE — curved ticker») ----------
-  // El texto avanza solo por la onda y se acelera un poco al hacer scroll; se para cuando no se ve.
-  var ribbonPath = document.querySelector(".ribbon textPath");
-  var ribbonText = document.querySelector(".ribbon-text");
-  if (ribbonPath && ribbonText && !reduceMotion) {
-    var ribbonOffset = 0, ribbonBoost = 0, ribbonVisible = true, ribbonLast = 0, lastScrollY = window.scrollY;
-    var groupLength = function () { return ribbonText.getComputedTextLength() / 3; };
-    var ribbonGroup = groupLength();
-    onLangChange.push(function () { ribbonGroup = groupLength(); });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ribbonGroup = groupLength(); });
-    window.addEventListener("scroll", function () {
-      ribbonBoost = Math.min(18, ribbonBoost + Math.abs(window.scrollY - lastScrollY) * 0.05);
-      lastScrollY = window.scrollY;
-    }, { passive: true });
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) { ribbonVisible = entries[0].isIntersecting; })
-        .observe(document.querySelector(".ribbon"));
-    }
-    (function ribbonFrame(now) {
-      var dt = Math.min(64, now - (ribbonLast || now));
-      ribbonLast = now;
-      if (ribbonVisible && ribbonGroup > 0) {
-        ribbonOffset -= dt * (0.06 + ribbonBoost * 0.02);
-        if (ribbonOffset <= -ribbonGroup) ribbonOffset += ribbonGroup;
-        ribbonPath.setAttribute("startOffset", ribbonOffset.toFixed(1));
-      }
-      ribbonBoost *= 0.92;
-      requestAnimationFrame(ribbonFrame);
-    })(performance.now());
-  }
-
   // ---------- Idioma inicial ----------
   var saved = null;
   try { saved = localStorage.getItem("lang"); } catch (e) { saved = null; }

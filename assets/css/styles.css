@@ -157,6 +157,13 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 /* ---------- Cinta ---------- */
 
 /* ---------- Secciones ---------- */
+.marquee { overflow: hidden; border-block: 1px solid var(--ink); padding: 18px 0; background: var(--ink); color: var(--paper); }
+.marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+.marquee-group { display: flex; align-items: center; gap: 28px; padding-right: 28px; font-size: clamp(28px, 4vw, 56px); font-weight: 600; letter-spacing: -.03em; white-space: nowrap; }
+.marquee-group em { font-size: 1.1em; }
+.marquee-group i { font-style: normal; color: var(--accent); font-size: .6em; }
+.marquee-group i svg { display: block; width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 .section { padding: clamp(80px, 12vw, 160px) var(--pad); }
 .section-rule { border-top: 1px solid var(--line); }
 .sec-head { display: flex; gap: 24px; align-items: baseline; margin-bottom: clamp(32px, 5vw, 64px); }
@@ -271,6 +278,7 @@ button.pill { font-family: inherit; color: inherit; background: none; cursor: po
 
 /* ---------- Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
   *, *::before, *::after { transition: none !important; }
   .js:not(.is-ready) .hero .line-inner { transform: none; }
   .js:not(.is-ready) .hero-grid, .js:not(.is-ready) .scroll-cue { opacity: 1; }
@@ -360,12 +368,4 @@ button.pill { font-family: inherit; color: inherit; background: none; cursor: po
   .folio.is-3d .folio-count { bottom: 40px; }
 }
 
-/* ---------- Cinta curva (inspirada en «AIRWAVE — curved ticker») ---------- */
-.ribbon { overflow: hidden; margin-block: clamp(-10px, -1vw, 0px); }
-.ribbon-svg { display: block; width: 100%; height: clamp(150px, 18vw, 260px); overflow: visible; }
-.ribbon-band { fill: none; stroke: var(--ink); stroke-width: 76; }
-.ribbon-shadow { fill: none; stroke: var(--accent); stroke-width: 76; transform: translate(0, 14px); opacity: .9; }
-.ribbon-text { font-family: var(--sans); font-size: 46px; font-weight: 650; letter-spacing: -.02em; fill: var(--paper); }
-.ribbon-em { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 52px; letter-spacing: 0; }
-.ribbon-sep { fill: var(--accent); font-family: var(--sans); }
 .scr { color: var(--accent); }
